@@ -1,0 +1,23 @@
+<%# app/views/tracks/show.html.erb %>
+<%# passing this bit of html to the cache%>
+
+<p><%= link_to "Back", tracks_path %></p>
+
+<section class="track">
+  <%= image_tag @track.featured_image if @track.featured_image.attached? %>
+  <%= audio_tag @track.featured_track, controls: true if @track.featured_track.attached? %>
+  <section class="track-info">
+    <% cache @track do %>
+      <h1><%= @track.name %></h1>
+      <% if @track.album %>
+        <p>From <%= link_to @track.album.name, album_path(@track.album) %></p>
+      <% end %>
+      <%= @track.description %>
+    <% end %>
+
+    <% if authenticated? %>
+      <%= link_to "Edit", edit_track_path(@track) %>
+      <%= button_to "Delete", @track, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </section>
+</section>

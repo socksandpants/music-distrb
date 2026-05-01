@@ -1,0 +1,39 @@
+<%# app/views/tracks/_form.html.erb%>
+
+<%= form_with model: track do |form| %>
+
+  <% if form.object.errors.any? %>
+    <p class="error"> <%= form.object.errors.full_messages.first %> </p>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :album_id, "Album" %>
+    <%= form.collection_select :album_id, Album.order(:name), :id, :name, include_blank: "(none)" %>
+  </div>
+
+  <%# I wonder how I would use flex boxes to organize these things %>
+
+  <div>
+    <%= form.label :description, style: "display: block"%>
+    <%= form.rich_textarea :description %>
+  </div>
+
+  <div>
+    <%= form.label :featured_track, style: "display: block" %>
+    <%= form.file_field :featured_track, accept: "tracks_uploads/*" %>
+  </div>
+
+  <div>
+    <%= form.label :featured_image, style: "display: block" %>
+    <%= form.file_field :featured_image, accept: "image/*" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

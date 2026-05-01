@@ -1,0 +1,22 @@
+<%# app/views/tracks/index.html.erb %>
+
+<%#= debug @tracks%>
+<h1>Tracks</h1>
+
+<%# can spruce up these links somehow %>
+<%= link_to "New track", new_track_path if authenticated? %>
+<%= link_to "Albums", albums_path %>
+<%= link_to "Login", new_session_path unless authenticated? %>
+
+<%# 
+  Here is where the tracks are all listed. Also some TODOs
+    - html <audio> tag to have a viewport to .mp3s
+    - an <image> tag for each track's optional picture
+%>
+<div id="tracks">
+  <% @tracks.each do |track| %>
+    <div>
+      <%= link_to track.name, track_path(track.id) %>
+    </div>
+  <% end %>
+</div>

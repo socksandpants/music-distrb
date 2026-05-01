@@ -1,0 +1,26 @@
+<%# app/views/albums/show.html.erb %>
+
+<p><%= link_to "Back", albums_path %></p>
+
+<section class="album">
+  <%= image_tag @album.featured_image if @album.featured_image.attached? %>
+  <section class="album-info">
+    <% cache @album do %>
+      <h1><%= @album.name %></h1>
+      <p><em><%= @album.kind_label %></em></p>
+      <%= @album.description %>
+    <% end %>
+
+    <h2>Tracks</h2>
+    <ul>
+      <% @album.tracks.each do |track| %>
+        <li><%= link_to track.name, track_path(track) %></li>
+      <% end %>
+    </ul>
+
+    <% if authenticated? %>
+      <%= link_to "Edit", edit_album_path(@album) %>
+      <%= button_to "Delete", @album, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <% end %>
+  </section>
+</section>

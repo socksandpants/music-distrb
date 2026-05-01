@@ -1,0 +1,14 @@
+<%# app/views/albums/index.html.erb %>
+
+<h1>Albums</h1>
+
+<%= link_to "New album", new_album_path if authenticated? %>
+
+<div id="albums">
+  <% @albums.each do |album| %>
+    <div>
+      <%= link_to album.name, album_path(album.id) %>
+      <small>(<%= album.kind_label %>)</small>
+    </div>
+  <% end %>
+</div>
