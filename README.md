@@ -2,19 +2,19 @@
 
 * Run the server. On port localhost:3000.
 
-'$ bin/rails server'
+`$ bin/rails server`
 
 * Run the console for Rails.
 
-'$ bin/rails console'
+`$ bin/rails console`
 
 * Check the routes the app responds to.
 
-'$ bin/rails routes'
+`$ bin/rails routes`
 
 
 * Migrate database
-'$ bin/rails db:migrate'
+`$ bin/rails db:migrate`
 
 Things I may want to cover later:
 
