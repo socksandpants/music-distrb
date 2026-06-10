@@ -1,15 +1,12 @@
 # README
 
 * Run the server. On port localhost:3000.
-
 `$ bin/rails server`
 
 * Run the console for Rails.
-
 `$ bin/rails console`
 
 * Check the routes the app responds to.
-
 `$ bin/rails routes`
 
 
